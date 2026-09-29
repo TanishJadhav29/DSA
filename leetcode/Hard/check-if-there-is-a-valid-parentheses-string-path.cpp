@@ -1,0 +1,54 @@
+// Problem: Check if There Is a Valid Parentheses String Path
+// Platform: leetcode
+// Rating/Difficulty: Hard
+// Language: cpp
+// Verdict: Accepted
+// URL: https://leetcode.com/problems/check-if-there-is-a-valid-parentheses-string-path/
+// Solved on: 2026-09-29T14:24:59.996Z
+
+class Solution {
+public:
+    int m, n;
+    int t[101][101][201];
+
+    bool solve(int i, int j, int openCount, vector<vector<char>>& grid) {
+        openCount += (grid[i][j] == '(') ? 1 : -1;
+
+        if(openCount < 0)
+            return false;
+
+        if(t[i][j][openCount] != -1) {
+            return t[i][j][openCount];
+        }
+        
+        if(i == m-1 && j == n-1)
+            return t[i][j][openCount] = (openCount == 0);
+
+        if(i+1 < m) {
+            if(solve(i+1, j, openCount, grid)) 
+                return t[i][j][openCount] = true;
+        }
+
+        if(j+1 < n) {
+            if(solve(i, j+1, openCount, grid)) 
+                return t[i][j][openCount] = true;
+        }
+
+        return t[i][j][openCount] = false;
+    }
+
+    bool hasValidPath(vector<vector<char>>& grid) {
+        m = grid.size();
+        n = grid[0].size();
+
+        
+        
+        if(grid[0][0] == ')' || grid[m-1][n-1] == '(')
+            return false;
+        
+        memset(t, -1, sizeof(t));
+
+        return solve(0, 0, 0, grid);
+
+    }
+};
