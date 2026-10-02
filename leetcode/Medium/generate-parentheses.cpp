@@ -4,43 +4,34 @@
 // Language: cpp
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/generate-parentheses/
-// Solved on: 2026-10-02T04:23:15.301Z
+// Solved on: 2026-10-02T04:31:53.136Z
 
 class Solution {
 public:
-bool isvalidstring(string temp){
-stack<char>st;
-for(int i=0;i<temp.size();i++){
-if(temp[i]=='('){
-    st.push('(');
-}
-else{
-    if(st.size()==0){
-        return false;
-    }
-    st.pop();
-}
-}
-return st.size()==0?true:false;
-}
+
 
 void rec(int open,int close,int n,vector<string>&ans,string temp){
-if(open==n&&close==n){
-    if(isvalidstring(temp)){ans.push_back(temp);
+    if(open==n){
+        string temptemp = temp;
+        while(close<n){
+            temptemp+=')';
+            close++;
+        }
+        cout<<temptemp<<endl;
+        ans.push_back(temptemp);
     }
-    return;
-}
-    if(open<n){
-    temp=temp+'(';
-    rec(open+1,close,n,ans,temp);
-    temp.erase(temp.begin()+(temp.size()-1));
-        }
-    if(close<n){
-    temp=temp+')';
-    rec(open,close+1,n,ans,temp);
-    temp.erase(temp.begin()+(temp.size()-1));  
-        }
 
+    if(open<n){
+        temp.push_back('(');
+        rec(open+1,close,n,ans,temp);
+        temp.pop_back();
+    }
+
+    if(close<open){
+        temp.push_back(')');
+        rec(open,close+1,n,ans,temp);
+        temp.pop_back();
+    }
 
 }
     vector<string> generateParenthesis(int n) {
