@@ -4,7 +4,7 @@
 // Language: cpp
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/remove-invalid-parentheses/
-// Solved on: 2026-10-07T18:40:16.752Z
+// Solved on: 2026-10-07T18:46:19.743Z
 
 class Solution {
 public:
