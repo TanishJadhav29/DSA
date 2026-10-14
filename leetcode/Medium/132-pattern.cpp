@@ -4,7 +4,7 @@
 // Language: cpp
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/132-pattern/
-// Solved on: 2026-10-14T11:19:57.364Z
+// Solved on: 2026-10-14T11:20:57.587Z
 
 class Solution {
 public:
@@ -21,7 +21,7 @@ public:
         for(int i=1;i<n;i++){
             auto it = mst.upper_bound(leftMin[i]);
             auto remove = mst.lower_bound(nums[i]);
-            cout<<leftMin[i]<<" "<<nums[i]<<" "<<endl;
+            //cout<<leftMin[i]<<" "<<nums[i]<<" "<<endl;
             // for (auto x : mst) {
             //     cout << x << " ";
             // }
@@ -31,7 +31,7 @@ public:
                 if(*it<nums[i]){
                     return true;
                     }
-            }else cout<<"not found"<<endl;
+            }
             mst.erase(remove);
         }
 
