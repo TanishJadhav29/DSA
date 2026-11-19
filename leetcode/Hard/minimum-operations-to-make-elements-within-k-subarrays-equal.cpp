@@ -4,7 +4,7 @@
 // Language: cpp
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/minimum-operations-to-make-elements-within-k-subarrays-equal/
-// Solved on: 2026-11-04T13:20:27.350Z
+// Solved on: 2026-11-19T16:32:51.589Z
 
 class Solution {
 public:
